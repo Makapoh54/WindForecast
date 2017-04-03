@@ -2,7 +2,6 @@ package com.test.anton.windforecast.data;
 
 import android.support.annotation.NonNull;
 
-
 import com.test.anton.windforecast.Settings;
 import com.test.anton.windforecast.data.database.FavouritesDBSource;
 import com.test.anton.windforecast.data.database.FavouritesSource;
@@ -20,10 +19,9 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 
-public class FavouritesRepository implements FavouritesSource{
+public class FavouritesRepository implements FavouritesSource {
 
     private static FavouritesRepository sFavouritesRepository = null;
 
@@ -129,8 +127,8 @@ public class FavouritesRepository implements FavouritesSource{
         return weatherForecasts;
     }
 
-    public void cancelFiveDaysForecastRequest(){
-        if(mAsyncForecastCall.isExecuted()){
+    public void cancelFiveDaysForecastRequest() {
+        if (mAsyncForecastCall.isExecuted()) {
             mAsyncForecastCall.cancel();
         }
     }

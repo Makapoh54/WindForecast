@@ -34,8 +34,8 @@ public class FavouriteDetailsPresenter implements FavouriteDetailsContract.Prese
 
     private String mCountryCode, mCityName;
 
-    public FavouriteDetailsPresenter(@NonNull FavouriteDetailsContract.View favouritesView,@NonNull FavouritesRepository repository,
-                                     @NonNull String countryCode,@NonNull String cityName) {
+    public FavouriteDetailsPresenter(@NonNull FavouriteDetailsContract.View favouritesView, @NonNull FavouritesRepository repository,
+                                     @NonNull String countryCode, @NonNull String cityName) {
         mDetailsView = favouritesView;
         mFavouritesRepository = repository;
         mCountryCode = countryCode;

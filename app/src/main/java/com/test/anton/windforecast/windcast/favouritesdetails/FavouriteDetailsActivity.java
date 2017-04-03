@@ -82,7 +82,7 @@ public class FavouriteDetailsActivity extends AppCompatActivity implements Favou
     }
 
     @Override
-    public void showDetails(@NotNull List<Float> forecast,@NotNull List<String> legend) {
+    public void showDetails(@NotNull List<Float> forecast, @NotNull List<String> legend) {
         for (int i = 0; i < forecast.size(); i++) {
             mSeries.addPoint(new ValueLinePoint(legend.get(i), forecast.get(i)));
             if (forecast.size() - i == 1) {

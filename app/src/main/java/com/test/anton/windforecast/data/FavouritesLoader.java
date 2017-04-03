@@ -4,16 +4,10 @@ import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 
 import com.test.anton.windforecast.models.Favourite;
-import com.test.anton.windforecast.data.database.FavouritesDBSource;
 import com.test.anton.windforecast.models.ForecastedFavourite;
-import com.test.anton.windforecast.models.WindForecast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
 
 public class FavouritesLoader extends AsyncTaskLoader<List<ForecastedFavourite>> implements FavouritesRepository.FavouritesRepositoryObserver {
 
@@ -30,7 +24,7 @@ public class FavouritesLoader extends AsyncTaskLoader<List<ForecastedFavourite>>
         List<Favourite> favourites = mDataRepository.getFavourites();
 
         List<ForecastedFavourite> result = new ArrayList<>();
-        for(Favourite favourite : favourites){
+        for (Favourite favourite : favourites) {
             result.add(new ForecastedFavourite(favourite, mDataRepository.getCurrentWindForecast(favourite.getCountryCode(), favourite.getCity())));
         }
         return result;

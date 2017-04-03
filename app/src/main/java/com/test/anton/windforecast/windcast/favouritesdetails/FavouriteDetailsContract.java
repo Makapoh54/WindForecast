@@ -8,7 +8,7 @@ import java.util.List;
 public interface FavouriteDetailsContract {
 
     interface View {
-        void showDetails(@NonNull List<Float> forecasts,@NonNull List<String> legend);
+        void showDetails(@NonNull List<Float> forecasts, @NonNull List<String> legend);
 
         void showLoadingError();
 

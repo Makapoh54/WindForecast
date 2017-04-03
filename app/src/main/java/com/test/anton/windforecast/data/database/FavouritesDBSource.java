@@ -11,7 +11,7 @@ import com.test.anton.windforecast.models.Favourite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavouritesDBSource implements FavouritesSource{
+public class FavouritesDBSource implements FavouritesSource {
 
     private static FavouritesDBSource sDataSource;
 

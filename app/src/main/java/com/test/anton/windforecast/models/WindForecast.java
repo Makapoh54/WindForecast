@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class WindForecast implements Serializable{
+public class WindForecast implements Serializable {
 
     @SerializedName("speed")
     private String mWindSpeed;

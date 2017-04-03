@@ -1,12 +1,11 @@
 package com.test.anton.windforecast.models;
 
 
-
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class WeatherForecast implements Serializable{
+public class WeatherForecast implements Serializable {
 
     @SerializedName("dt")
     private String mTimeStamp;

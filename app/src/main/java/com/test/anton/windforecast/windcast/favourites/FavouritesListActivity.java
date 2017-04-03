@@ -34,9 +34,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import timber.log.Timber;
 
-/**
- * FavouritesListActivity represents View in MVP design pattern.
- */
+
 public class FavouritesListActivity extends AppCompatActivity implements FavouritesContract.View {
 
     private FavouritesListAdapter mFavouritesListAdapter;
@@ -155,7 +153,7 @@ public class FavouritesListActivity extends AppCompatActivity implements Favouri
 
     @Override
     public void showFavourites(List<ForecastedFavourite> favourites) {
-        if(favourites.size() == 0){
+        if (favourites.size() == 0) {
             Utils.showView(mNoItems);
         } else {
             Utils.hideView(mNoItems);
