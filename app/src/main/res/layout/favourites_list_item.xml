@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_favourites_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_list_text">
+
+    <TextView
+        android:id="@+id/tv_favourite_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/city"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="@dimen/ts_list_item_title"/>
+
+    <TextView
+        android:id="@+id/tv_favourite_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_favourite_city"
+        android:layout_below="@id/tv_favourite_city"
+        android:text="@string/country"
+        android:textSize="@dimen/ts_list_item_content"/>
+
+    <TextView
+        android:id="@+id/tv_current_wind_forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_wind_forecast"
+        android:textSize="@dimen/ts_list_item_content"
+        android:layout_alignBaseline="@+id/tv_current_wind_properties"
+        android:layout_alignBottom="@+id/tv_current_wind_properties"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tv_current_wind_properties"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_list_text"
+        android:layout_below="@id/tv_favourite_country"
+        android:text="@string/no_info"
+        android:textSize="@dimen/ts_list_item_content"
+        android:layout_toEndOf="@+id/tv_current_wind_forecast"/>
+</RelativeLayout>

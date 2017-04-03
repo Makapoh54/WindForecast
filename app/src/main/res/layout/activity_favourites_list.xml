@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.anton.windforecast.windcast.favourites.FavouritesListActivity">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/favourites_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="@dimen/padding_list_above"
+            android:paddingTop="@dimen/padding_list_above"
+            android:scrollbars="vertical"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fl_bttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="@android:color/white"
+        app:fabSize="normal"/>
+
+    <TextView
+        android:id="@+id/tv_list_no_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="@string/no_favourites_message"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@+id/progress_bar"
+        layout="@layout/progress"
+        android:visibility="gone"/>
+</android.support.design.widget.CoordinatorLayout>

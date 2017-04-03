@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Weather Alert</string>
+
+    <string name="placeholder">Placeholder</string>
+
+    <string name="search_country">Enter country name</string>
+    <string name="search_city">Enter city name</string>
+
+    <!--Favourites List-->
+    <string name="no_favourites_message">You have no favourite locations added. Please press floating button to start.</string>
+    <string name="already_added_message">This location already exists, choose another location.</string>
+
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="current_wind_forecast">Current wind forecast:</string>
+    <string name="speed_meters_sec">m\/s</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="wind_direction">Wind direction</string>
+    <string name="direction">Direction</string>
+    <string name="speed">Speed</string>
+
+    <!--Favourite Details Screen-->
+    <string name="five_day_forecast">5 days wind forecast (m/s)</string>
+    <string name="time_period">Time Period</string>
+
+
+    <!--Error messages-->
+    <string name="no_info">No Information</string>
+    <string name="network_error_no_connection">Error. No internet connection.</string>
+</resources>
