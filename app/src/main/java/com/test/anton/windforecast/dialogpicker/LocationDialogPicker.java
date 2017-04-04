@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -34,6 +33,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 
 public class LocationDialogPicker extends DialogFragment {
@@ -65,6 +65,7 @@ public class LocationDialogPicker extends DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_location_picker, null);
         ButterKnife.bind(this, view);
+        Timber.i("Location picker dialog is created");
         Bundle args = getArguments();
         if (args != null) {
             String dialogTitle = args.getString("dialogTitle");
@@ -97,6 +98,7 @@ public class LocationDialogPicker extends DialogFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mListener != null) {
+                    Timber.i("Location picker dialog item is clicked");
                     String value;
                     if (isCountry) {
                         value = Utils.getCountryCode(mSearchedLocationList.get(position));

@@ -12,6 +12,8 @@ import com.test.anton.windforecast.models.ForecastedFavourite;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 
 public class FavouritesListPresenter implements FavouritesContract.Presenter, LoaderManager.LoaderCallbacks<List<ForecastedFavourite>> {
 
@@ -28,6 +30,7 @@ public class FavouritesListPresenter implements FavouritesContract.Presenter, Lo
 
     public FavouritesListPresenter(@NonNull FavouritesLoader loader, @NonNull LoaderManager loaderManager,
                                    @NonNull FavouritesContract.View favouritesView, @NonNull FavouritesRepository dataSource) {
+        Timber.i("FavouritesListPresenter created");
         mLoader = loader;
         mLoaderManager = loaderManager;
         mFavouritesView = favouritesView;

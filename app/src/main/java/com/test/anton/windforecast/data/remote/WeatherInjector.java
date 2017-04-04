@@ -21,9 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
 import static com.test.anton.windforecast.Settings.SYNCHRONIZATION_CACHE_SIZE;
-import static com.test.anton.windforecast.Settings.SYNCHRONIZATION_INTERVAL_ONLINE;
 import static com.test.anton.windforecast.Settings.SYNCHRONIZATION_INTERVAL_OFFLINE;
-import static okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS;
+import static com.test.anton.windforecast.Settings.SYNCHRONIZATION_INTERVAL_ONLINE;
 
 public class WeatherInjector {
     private static final String CACHE_CONTROL = "Cache-Control";
@@ -62,7 +61,7 @@ public class WeatherInjector {
                 Timber.d(message);
             }
         });
-        httpLoggingInterceptor.setLevel(HEADERS);
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         return httpLoggingInterceptor;
     }
 

@@ -11,6 +11,8 @@ import com.test.anton.windforecast.models.Favourite;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class FavouritesDBSource implements FavouritesSource {
 
     private static FavouritesDBSource sDataSource;
@@ -59,10 +61,10 @@ public class FavouritesDBSource implements FavouritesSource {
             if (cursor != null) {
                 cursor.close();
             }
-
         } catch (IllegalStateException e) {
-            // Send to analytics, log etc
+            Timber.e(e, "DB getFavourites Error");
         }
+        Timber.i("DB Favourites retrieved");
         return favourites;
     }
 
@@ -75,8 +77,9 @@ public class FavouritesDBSource implements FavouritesSource {
 
             mDb.insert(FavouritesDBContract.FavouriteEntry.TABLE_NAME, null, values);
         } catch (IllegalStateException e) {
-            // Send to analytics, log etc
+            Timber.e(e, "DB saveFavourites Error");
         }
+        Timber.i("DB Favourite saved");
     }
 
     @Override
@@ -90,7 +93,7 @@ public class FavouritesDBSource implements FavouritesSource {
 
             mDb.update(FavouritesDBContract.FavouriteEntry.TABLE_NAME, values, selection, selectionArgs);
         } catch (IllegalStateException e) {
-            // Send to analytics, log etc
+            Timber.e(e, "DB updateFavourites Error");
         }
     }
 
@@ -99,8 +102,9 @@ public class FavouritesDBSource implements FavouritesSource {
         try {
             mDb.delete(FavouritesDBContract.FavouriteEntry.TABLE_NAME, null, null);
         } catch (IllegalStateException e) {
-            // Send to analytics, log etc
+            Timber.e(e, "DB deleteAllFavourites Error");
         }
+        Timber.i("DB Favourites deleted");
     }
 
     @Override
@@ -111,8 +115,9 @@ public class FavouritesDBSource implements FavouritesSource {
 
             mDb.delete(FavouritesDBContract.FavouriteEntry.TABLE_NAME, selection, selectionArgs);
         } catch (IllegalStateException e) {
-            // Send to analytics, log etc
+            Timber.e(e, "DB deleteFavourite Error");
         }
+        Timber.i("DB Favourite deleted");
     }
 
 }

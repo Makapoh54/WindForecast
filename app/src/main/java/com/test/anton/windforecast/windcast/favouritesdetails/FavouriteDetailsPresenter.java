@@ -1,6 +1,7 @@
 package com.test.anton.windforecast.windcast.favouritesdetails;
 
 import android.support.annotation.NonNull;
+import android.text.format.DateFormat;
 
 import com.test.anton.windforecast.data.FavouritesRepository;
 import com.test.anton.windforecast.models.WeatherForecast;
@@ -31,11 +32,11 @@ public class FavouriteDetailsPresenter implements FavouriteDetailsContract.Prese
 
     private List<String> mChartLegend = new ArrayList<>();
 
-
     private String mCountryCode, mCityName;
 
     public FavouriteDetailsPresenter(@NonNull FavouriteDetailsContract.View favouritesView, @NonNull FavouritesRepository repository,
                                      @NonNull String countryCode, @NonNull String cityName) {
+        Timber.i("FavouriteDetailsPresenter created");
         mDetailsView = favouritesView;
         mFavouritesRepository = repository;
         mCountryCode = countryCode;
@@ -45,6 +46,7 @@ public class FavouriteDetailsPresenter implements FavouriteDetailsContract.Prese
     @Override
     public void loadForecast() {
         mDetailsView.setLoadingIndicator(true);
+
         mForecast = mFavouritesRepository.getFiveDaysForecastAsync(mCountryCode, mCityName, new Callback<WeatherForecasts>() {
             @Override
             public void onResponse(Call<WeatherForecasts> call, Response<WeatherForecasts> response) {
@@ -77,12 +79,14 @@ public class FavouriteDetailsPresenter implements FavouriteDetailsContract.Prese
 
 
     private void prepareForecastData() {
+        mWindSpeed.clear();
+        mChartLegend.clear();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd", Locale.ENGLISH);
         Calendar tomorrow = Calendar.getInstance();
         boolean isToday = true;
         Date forecastDate;
 
-        tomorrow.add(Calendar.DAY_OF_MONTH, 2);
+        tomorrow.add(Calendar.DAY_OF_MONTH, 1);
         tomorrow.set(Calendar.HOUR_OF_DAY, 12);
         tomorrow.set(Calendar.MINUTE, 0);
         tomorrow.set(Calendar.SECOND, 0);
@@ -94,7 +98,7 @@ public class FavouriteDetailsPresenter implements FavouriteDetailsContract.Prese
                 mWindSpeed.add(Float.parseFloat(forecast.getWindForecast().getWindSpeed()));
                 mChartLegend.add("Today");
                 isToday = false;
-            } else if (forecastDate.equals(tomorrow.getTime())) {
+            } else if (((String) DateFormat.format("dd",   forecastDate)).equals((String) DateFormat.format("dd",   tomorrow.getTime()))) {
                 mWindSpeed.add(Float.parseFloat(forecast.getWindForecast().getWindSpeed()));
                 mChartLegend.add(dateFormat.format(tomorrow.getTime()) + "(" + Utils.getWindCardinalDirection(forecast.getWindForecast().getWindDegree()) + ")");
                 tomorrow.add(Calendar.DAY_OF_MONTH, 1);

@@ -19,6 +19,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import timber.log.Timber;
 
 
 public class FavouritesRepository implements FavouritesSource {
@@ -110,8 +111,9 @@ public class FavouritesRepository implements FavouritesSource {
         try {
             windForecast = call.execute().body().getWindForecast();
         } catch (IOException e) {
-            e.printStackTrace();
+            Timber.e(e, "Retrofit getCurrentWindForecast Error");
         }
+        Timber.i("Retrofit getCurrentWindForecast retrieved");
         return windForecast;
     }
 

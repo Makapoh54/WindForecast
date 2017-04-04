@@ -32,8 +32,6 @@ public class FavouriteDetailsActivity extends AppCompatActivity implements Favou
     private Unbinder mUnbinder;
     private FavouriteDetailsPresenter mFavouritesListPresenter;
 
-    private String mCountryCode;
-    private String mCityName;
     private ValueLineSeries mSeries;
 
     @BindView(R.id.tv_details_time_period)
@@ -49,18 +47,15 @@ public class FavouriteDetailsActivity extends AppCompatActivity implements Favou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite_details);
-        Timber.i("FavouritesListActivity created");
+        Timber.i("Favourites details acitivity created");
         mUnbinder = ButterKnife.bind(this);
 
         FavouritesRepository repository = FavouritesRepository.getInstance(FavouritesDBSource.getInstance(getApplicationContext()), WeatherInjector.provideWeatherService());
 
-        mCountryCode = getIntent().getStringExtra(COUNTRY_CODE);
-        mCityName = getIntent().getStringExtra(CITY_NAME);
-        mDetailsCity.setText(mCityName);
-        mFavouritesListPresenter = new FavouriteDetailsPresenter(this, repository, mCountryCode, mCityName);
-
-        mSeries = new ValueLineSeries();
-        mSeries.setColor(this.getResources().getColor(R.color.colorPrimary));
+        String countryCode = getIntent().getStringExtra(COUNTRY_CODE);
+        String cityName = getIntent().getStringExtra(CITY_NAME);
+        mDetailsCity.setText(cityName);
+        mFavouritesListPresenter = new FavouriteDetailsPresenter(this, repository, countryCode, cityName);
     }
 
     @Override
@@ -83,6 +78,9 @@ public class FavouriteDetailsActivity extends AppCompatActivity implements Favou
 
     @Override
     public void showDetails(@NotNull List<Float> forecast, @NotNull List<String> legend) {
+        Timber.i("Forecast is shown");
+        mSeries = new ValueLineSeries();
+        mSeries.setColor(this.getResources().getColor(R.color.colorPrimary));
         for (int i = 0; i < forecast.size(); i++) {
             mSeries.addPoint(new ValueLinePoint(legend.get(i), forecast.get(i)));
             if (forecast.size() - i == 1) {
@@ -91,6 +89,7 @@ public class FavouriteDetailsActivity extends AppCompatActivity implements Favou
             }
         }
 
+        mCubicValueLineChart.clearChart();
         mCubicValueLineChart.addSeries(mSeries);
         mCubicValueLineChart.startAnimation();
     }

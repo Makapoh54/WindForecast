@@ -1,8 +1,7 @@
 package com.test.anton.windforecast.windcast.favourites;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -73,19 +72,6 @@ public class FavouritesListActivity extends AppCompatActivity implements Favouri
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1) {
-            if (resultCode == Activity.RESULT_OK) {
-                String result = data.getStringExtra("result");
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
@@ -152,7 +138,8 @@ public class FavouritesListActivity extends AppCompatActivity implements Favouri
     }
 
     @Override
-    public void showFavourites(List<ForecastedFavourite> favourites) {
+    public void showFavourites(@NonNull List<ForecastedFavourite> favourites) {
+        Timber.i("Favourites list is shown");
         if (favourites.size() == 0) {
             Utils.showView(mNoItems);
         } else {
